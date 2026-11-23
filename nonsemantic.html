@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityCare Hospital - Non-Semantic Version</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background-color: #f8fafc;
+    }
+
+    .header-box {
+      background-color: #0f4c81;
+      color: #ffffff;
+      padding: 1.5rem 2rem;
+    }
+
+    .brand-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    .subtext {
+      margin-top: 0.25rem;
+      opacity: 0.9;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .section-box,
+    .side-panel {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+
+    .section-title,
+    .side-panel h4,
+    .section-box h4 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #cbd5e1;
+      color: #0f172a;
+    }
+
+    .item-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.9rem;
+      background-color: #f9fafb;
+    }
+
+    .item-card h5 {
+      font-size: 1.05rem;
+      color: #0f4c81;
+      margin-bottom: 0.35rem;
+    }
+
+    .field-group {
+      margin-bottom: 0.9rem;
+    }
+
+    .field-group span {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid #94a3b8;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .fake-submit {
+      display: inline-block;
+      background-color: #0f4c81;
+      color: #ffffff;
+      border-radius: 4px;
+      padding: 0.65rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .fake-submit:hover {
+      background-color: #093459;
+    }
+
+    .footer-box {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .page-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-box">
+    <div class="brand-name">CityCare Multispecialty Hospital</div>
+    <div class="subtext">Hospital services, doctor information, and appointment booking</div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#appointment">Book Appointment</a>
+      <a href="#info">Visiting Info</a>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div id="services" class="section-box">
+      <div class="section-title">Hospital Services</div>
+
+      <div class="item-card">
+        <h5>24/7 Emergency &amp; Trauma Care</h5>
+        <p>Immediate triage, critical care doctors, and emergency ambulance support.</p>
+      </div>
+
+      <div class="item-card">
+        <h5>Diagnostic &amp; Imaging Center</h5>
+        <p>Digital X-ray, MRI, ultrasound, and pathology lab services.</p>
+      </div>
+    </div>
+
+    <div id="doctors" class="section-box">
+      <div class="section-title">Doctor Information</div>
+
+      <div class="item-card">
+        <h5>Dr. Ananya Rao, MD</h5>
+        <p><span>Cardiology</span> | <span>Mon–Fri: 10:00 AM – 2:00 PM</span></p>
+      </div>
+
+      <div class="item-card">
+        <h5>Dr. Karthik Reddy, MS</h5>
+        <p><span>Orthopedics</span> | <span>Tue–Sat: 11:00 AM – 4:00 PM</span></p>
+      </div>
+    </div>
+
+    <div id="info" class="side-panel">
+      <h4>Visiting Information</h4>
+      <p>Visiting hours: 4:00 PM to 7:00 PM every day.</p>
+      <p>Please carry a photo ID and previous prescriptions.</p>
+    </div>
+
+    <div id="appointment" class="section-box">
+      <h4>Patient Appointment Form</h4>
+
+      <form action="#" method="post">
+        <div class="field-group">
+          <span>Full Name</span>
+          <input type="text" name="patientName" />
+        </div>
+
+        <div class="field-group">
+          <span>Email Address</span>
+          <input type="text" name="patientEmail" />
+        </div>
+
+        <div class="field-group">
+          <span>Phone Number</span>
+          <input type="text" name="patientPhone" />
+        </div>
+
+        <div class="field-group">
+          <span>Select Doctor</span>
+          <select name="doctor">
+            <option value="">Select a doctor</option>
+            <option value="dr-ananya-rao">Dr. Ananya Rao (Cardiology)</option>
+            <option value="dr-karthik-reddy">Dr. Karthik Reddy (Orthopedics)</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <span>Preferred Date</span>
+          <input type="text" name="appointmentDate" placeholder="DD/MM/YYYY" />
+        </div>
+
+        <div class="field-group">
+          <span>Reason for Visit / Symptoms</span>
+          <textarea name="symptoms" rows="4"></textarea>
+        </div>
+
+        <div class="fake-submit" onclick="document.forms[0].submit()">Submit Appointment</div>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-box">
+    <p>&copy; 2026 CityCare Multispecialty Hospital. All rights reserved.</p>
+  </div>
+</body>
+</html>

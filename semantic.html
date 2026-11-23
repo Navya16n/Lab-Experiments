@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityCare Hospital - Patient Appointment Management</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --bg: #f4f7f9;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #cbd5e1;
+      --success-bg: #ecfdf5;
+      --success-border: #10b981;
+      --success-text: #065f46;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 1.5rem 1rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      color: #ccfbf1;
+      font-size: 0.95rem;
+    }
+
+    nav {
+      background-color: var(--primary-dark);
+      padding: 0.75rem 1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 2rem 1rem;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem;
+      background-color: #f8fafc;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    ul.guidelines {
+      padding-left: 1.25rem;
+    }
+
+    ul.guidelines li {
+      margin-bottom: 0.4rem;
+    }
+
+    fieldset {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    legend {
+      font-weight: 600;
+      color: var(--primary-dark);
+      padding: 0 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+      font-size: 0.92rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background-color: #ffffff;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid var(--primary);
+      border-color: var(--primary);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      background-color: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.7rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: var(--primary-dark);
+    }
+
+    #confirmation {
+      display: none;
+      margin-top: 1.25rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-text);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      background-color: #0f172a;
+      color: #cbd5e1;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>CityCare Multispecialty Hospital</h1>
+      <p>Compassionate care, specialist doctors, and easy appointment booking.</p>
+    </div>
+  </header>
+
+  <nav aria-label="Primary Navigation">
+    <div class="container">
+      <ul>
+        <li><a href="#services">Hospital Services</a></li>
+        <li><a href="#doctors">Doctors</a></li>
+        <li><a href="#book-appointment">Book Appointment</a></li>
+        <li><a href="#patient-info">Patient Info</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="services">
+      <h2>Hospital Services</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>24/7 Emergency &amp; Trauma Care</h3>
+          <p>Immediate triage, critical care physicians, and rapid ambulance support.</p>
+        </article>
+        <article class="card">
+          <h3>Diagnostic &amp; Imaging Center</h3>
+          <p>Digital X-ray, MRI, ultrasound, and pathology lab testing with fast reports.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="doctors">
+      <h2>Doctor Information</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Dr. Ananya Rao, MD</h3>
+          <div class="meta">
+            <strong>Specialization:</strong> Cardiology<br />
+            <strong>Schedule:</strong> Mon–Fri, 10:00 AM – 2:00 PM
+          </div>
+        </article>
+        <article class="card">
+          <h3>Dr. Karthik Reddy, MS</h3>
+          <div class="meta">
+            <strong>Specialization:</strong> Orthopedics<br />
+            <strong>Schedule:</strong> Tue–Sat, 11:00 AM – 4:00 PM
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="patient-info">
+      <h2>Visiting Guidelines</h2>
+      <ul class="guidelines">
+        <li>Visiting hours: 4:00 PM to 7:00 PM daily.</li>
+        <li>Carry a valid ID and past reports for faster check-in.</li>
+      </ul>
+    </section>
+
+    <section id="book-appointment">
+      <h2>Patient Appointment Form</h2>
+      <form id="appointmentForm">
+        <fieldset>
+          <legend>Patient Details</legend>
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="Enter full name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="name@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="10-digit mobile number" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Appointment Details</legend>
+          <div class="form-group">
+            <label for="doctor">Select Doctor *</label>
+            <select id="doctor" name="doctor" required>
+              <option value="">-- Choose a doctor --</option>
+              <option value="Dr. Ananya Rao (Cardiology)">Dr. Ananya Rao (Cardiology)</option>
+              <option value="Dr. Karthik Reddy (Orthopedics)">Dr. Karthik Reddy (Orthopedics)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="preferredDate">Preferred Date *</label>
+            <input type="date" id="preferredDate" name="preferredDate" required />
+          </div>
+          <div class="form-group">
+            <label for="reason">Reason for Visit / Symptoms</label>
+            <textarea id="reason" name="reason" placeholder="Describe your symptoms or consultation reason"></textarea>
+          </div>
+        </fieldset>
+
+        <button type="submit">Book Appointment</button>
+      </form>
+
+      <div id="confirmation" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>&copy; 2026 CityCare Multispecialty Hospital. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#doctors">Doctors</a></li>
+        <li><a href="#book-appointment">Book Appointment</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("appointmentForm");
+    const confirmation = document.getElementById("confirmation");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const fullName = document.getElementById("fullName").value.trim();
+      const doctor = document.getElementById("doctor").value;
+      const preferredDate = document.getElementById("preferredDate").value;
+
+      confirmation.style.display = "block";
+      confirmation.innerHTML =
+        "<strong>Appointment Request Received:</strong> Thank you, " +
+        fullName +
+        ". Your booking with <strong>" +
+        doctor +
+        "</strong> on <strong>" +
+        preferredDate +
+        "</strong> has been recorded.";
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
